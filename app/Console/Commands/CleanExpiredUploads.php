@@ -32,7 +32,9 @@ class CleanExpiredUploads extends Command
         foreach ($expiredSessions as $session) {
             foreach ($session->files as $file) {
                 if (Storage::exists($file->path)) {
+                    $directory = dirname($file->path);
                     Storage::delete($file->path);
+                    Storage::deleteDirectory($directory);
                 }
             }
 

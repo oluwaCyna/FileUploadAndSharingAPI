@@ -1,9 +1,14 @@
 # Local Setup and Testing
 
 ### Requirements
-* PHP, MySQL, Redis and Git
+* PHP, MySQL and Git
 
 ### Setup
+Clone the repo
+```bash
+$ git clone https://github.com/oluwaCyna/FileUploadAndSharingAPI.git
+cd file-upload-sharing-api
+```
 
 install dependencies
 ```bash

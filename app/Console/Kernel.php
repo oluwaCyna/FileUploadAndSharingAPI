@@ -12,7 +12,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('clean:expired-uploads')->daily();
+        $schedule->command('clean:expired-uploads')->daily()
+            ->timezone('Africa/Lagos')
+            ->at('23:59');
     }
 
     /**

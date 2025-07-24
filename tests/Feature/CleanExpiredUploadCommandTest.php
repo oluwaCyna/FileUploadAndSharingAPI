@@ -13,7 +13,7 @@ it('cleans up expired uploads and files', function () {
     $file = UploadedFile::fake()->create('expired.pdf', 10, 'application/pdf');
 
     $session = UploadSession::create([
-        'expires_at' => now()->subDay(),
+        'expires_in' => -1,
     ]);
 
     $storedFile = $file->store("uploads/{$session->token}");
@@ -30,5 +30,5 @@ it('cleans up expired uploads and files', function () {
     Artisan::call('clean:expired-uploads');
 
     Storage::assertMissing($storedFile);
-    // expect(UploadSession::count())->toBe(0);
+    expect(UploadSession::count())->toBe(0);
 });

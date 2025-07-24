@@ -6,11 +6,22 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 beforeEach(function () {
-    Storage::fake('local');
+    if (Str::contains(test()->name(), 'downloads_multiple_files_as_a_zip')) {
+        Storage::disk('local');
+    } else {
+        Storage::fake('local');
+    }
     Mail::fake();
     Queue::fake();
+});
+
+afterEach(function () {
+    if (Str::contains(test()->name(), 'downloads_multiple_files_as_a_zip')) {
+        Storage::disk('local')->deleteDirectory('uploads');
+    }
 });
 
 it('uploads a single file successfully', function () {
