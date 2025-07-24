@@ -7,7 +7,7 @@
 Clone the repo
 ```bash
 $ git clone https://github.com/oluwaCyna/FileUploadAndSharingAPI.git
-cd file-upload-sharing-api
+cd FileUploadAndSharingAPI
 ```
 
 install dependencies
